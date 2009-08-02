@@ -30,8 +30,10 @@ var CookieMonitoringApp = {
 	},
 
 	addStartTime:function(objIn){       
-		var cookieData = dojo.io.cookie.getObjectCookie("MonitoringApp");           
 		var newData = "";   
+		var cookieData = dojo.io.cookie.getObjectCookie("MonitoringApp");
+
+		if (!objIn.startTime) { objIn.startTime = new Date().getTime() };
 
 		if (cookieData) {
 			newData += this._createDataFromCookie(cookieData);
@@ -52,6 +54,9 @@ var CookieMonitoringApp = {
 	addEndTime:function(objIn){
 		var newData = "";
 		var cookieData = dojo.io.cookie.getObjectCookie("MonitoringApp");
+
+		if (!objIn.endTime) { objIn.startTime = new Date().getTime() };
+
 		if ((cookieData) && (cookieData[objIn.processName])) {
 			this._notify(cookieData[objIn.processName], objIn.endTime, objIn.processName);
 			delete cookieData[objIn.processName];
@@ -86,7 +91,7 @@ var CookieMonitoringApp = {
 
 var observer = {   
 	update: function(startTime, endTime, processName) {
-		//...		
+		//... here you can simply tell someone that a process was completed.
 	}
 }     
 CookieMonitoringApp.addObserver(observer);   
