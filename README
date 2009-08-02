@@ -1,0 +1,22 @@
+## MONITORING APP:
+
+	This is just another way to create monitoring points within your web applications.
+
+## HOW TO:
+	To start clocking the time you need to invoke the "addStartTime" function with the process name.
+	When you want to stop clocking, just invoke the "addEndTime" with the same process name which you used to start clocking.
+	
+	<script type="text/javascript">
+		CookieIntraOrder.addStartTime({processName:'the_process_name'});
+		...
+		...
+		...
+		CookieIntraOrder.addEndTime({processName:"the_process_name"});
+	</script>
+	
+## WHO?
+
+* [Alberto Leal][a]
+
+[a]: http://www.albertoleal.eti.br
+
